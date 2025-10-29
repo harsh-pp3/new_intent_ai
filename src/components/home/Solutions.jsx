@@ -1,5 +1,14 @@
+import { useState, useEffect } from 'react';
+import { fetchSolutions } from '../../services/api';
+
 const Solutions = () => {
-  const data = [
+  const [solutionsData, setSolutionsData] = useState(null);
+
+  useEffect(() => {
+    fetchSolutions().then(data => setSolutionsData(data.data));
+  }, []);
+
+  const fallbackData = [
     {
       title: "AI Chat Bot",
       desc: "Enhance customer engagement, automate support, and improve service efficiency with intelligent interactive AI chatbots.",
@@ -25,6 +34,8 @@ const Solutions = () => {
       id: "text-to-video",
     },
   ];
+
+  const data = solutionsData?.solutionItems || fallbackData;
   return (
     <section className="solutions-one">
       <div className="container">
@@ -33,16 +44,13 @@ const Solutions = () => {
           id="solutions"
         >
           <div className="section-title__tagline-box">
-            <span className="section-title__tagline">Solutions</span>
+            <span className="section-title__tagline">{solutionsData?.sectionTitle || 'Solutions'}</span>
           </div>
           <h2 className="section-title__title">
-            AI-Powered Solutions and Consultancy
+            {solutionsData?.mainTitle || 'AI-Powered Solutions and Consultancy'}
           </h2>
           <p>
-            We offer a wide range of AI consulting services to optimize content
-            creation and consumption. Our solutions are tailor-made to meet your
-            business needs, ensuring you deliver the right content in the
-            correct format to the right audience.
+            {solutionsData?.description || 'We offer a wide range of AI consulting services to optimize content creation and consumption. Our solutions are tailor-made to meet your business needs, ensuring you deliver the right content in the correct format to the right audience.'}
           </p>
         </div>
         <div className="solutions-one__carousel ">
@@ -56,12 +64,12 @@ const Solutions = () => {
                 <div className="item h-100">
                   <div className="solutions-one__single h-100">
                     <div className="solutions-one__icon">
-                      <img src={item.image} alt={item.title} />
+                      <img src={item.icon?.url || item.image} alt={item.title} />
                     </div>
                     <h4 className="solutions-one__title">
                       <span className="text-white">{item.title}</span>
                     </h4>
-                    <p className="solutions-one__text">{item.desc}</p>
+                    <p className="solutions-one__text">{item.description || item.desc}</p>
                   </div>
                 </div>
               </div>
