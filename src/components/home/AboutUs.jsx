@@ -22,7 +22,7 @@ const AboutUs = () => {
             <div className="page-title__title-box">
               <p className="page-title__sub-title">{aboutData?.sectionTitle || 'About Us'}</p>
               <h3 className="page-title__title">
-                {aboutData?.mainTitle || 'Innovators in AI-Driven Content Solutions'}
+                {typeof aboutData?.mainTitle === 'string' ? aboutData.mainTitle : 'Innovators in AI-Driven Content Solutions'}
               </h3>
             </div>
           </div>
@@ -44,10 +44,10 @@ const AboutUs = () => {
               <div className="about-one__left ps-lg-5">
                 <div className="about-one__left-content">
                   <p className="about-one__text my-3">
-                    {aboutData?.description1 || 'We specialize in AI consulting services that drive digital transformation through content enablement. Our team is passionate about leveraging the latest advancements in AI to help businesses create, manage, and distribute content more effectively.'}
+                    {typeof aboutData?.description1 === 'string' ? aboutData.description1 : 'We specialize in AI consulting services that drive digital transformation through content enablement. Our team is passionate about leveraging the latest advancements in AI to help businesses create, manage, and distribute content more effectively.'}
                   </p>
                   <p className="about-one__text">
-                    {aboutData?.description2 || 'Our mission is to deliver personalized, scalable, high-quality content experiences that keep you ahead of the competition.'}
+                    {typeof aboutData?.description2 === 'string' ? aboutData.description2 : 'Our mission is to deliver personalized, scalable, high-quality content experiences that keep you ahead of the competition.'}
                   </p>
                 </div>
               </div>

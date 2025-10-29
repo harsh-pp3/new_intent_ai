@@ -13,7 +13,7 @@ const AiPack = () => {
       <div className="container">
         <div className="feature-one__inner">
           <h2 className="feature-one__title">
-            {heroData?.mainTitle || 'Explore the Possibilities of AI with Intent-Content'}
+            {typeof heroData?.mainTitle === 'string' ? heroData.mainTitle : 'Explore the Possibilities of AI with Intent-Content'}
           </h2>
 
           <div className="feature-one__main-content-box">

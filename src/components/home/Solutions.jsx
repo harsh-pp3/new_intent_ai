@@ -47,10 +47,10 @@ const Solutions = () => {
             <span className="section-title__tagline">{solutionsData?.sectionTitle || 'Solutions'}</span>
           </div>
           <h2 className="section-title__title">
-            {solutionsData?.mainTitle || 'AI-Powered Solutions and Consultancy'}
+            {typeof solutionsData?.mainTitle === 'string' ? solutionsData.mainTitle : 'AI-Powered Solutions and Consultancy'}
           </h2>
           <p>
-            {solutionsData?.description || 'We offer a wide range of AI consulting services to optimize content creation and consumption. Our solutions are tailor-made to meet your business needs, ensuring you deliver the right content in the correct format to the right audience.'}
+            {typeof solutionsData?.description === 'string' ? solutionsData.description : 'We offer a wide range of AI consulting services to optimize content creation and consumption. Our solutions are tailor-made to meet your business needs, ensuring you deliver the right content in the correct format to the right audience.'}
           </p>
         </div>
         <div className="solutions-one__carousel ">
