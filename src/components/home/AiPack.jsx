@@ -13,7 +13,7 @@ const AiPack = () => {
       <div className="container">
         <div className="feature-one__inner">
           <h2 className="feature-one__title">
-            {typeof heroData?.mainTitle === 'string' ? heroData.mainTitle : 'Explore the Possibilities of AI with Intent-Content'}
+            {heroData?.mainTitle || 'Explore the Possibilities of AI with Intent-Content'}
           </h2>
 
           <div className="feature-one__main-content-box">
@@ -26,7 +26,7 @@ const AiPack = () => {
                   <li key={index}>
                     <div className="feature-one__single">
                       <div className="feature-one__icon">
-                        <img src={feature.icon?.url || "images/icons/ai-content-writing.png"} alt="" />
+                        <img src={feature.icon?.data?.attributes?.url ? `http://localhost:1337${feature.icon.data.attributes.url}` : "images/icons/ai-content-writing.png"} alt="" />
                       </div>
                       <h5 className="feature-one__title-2 text-white">
                         {feature.title || 'AI Content Writing'}
@@ -70,7 +70,7 @@ const AiPack = () => {
                   <li key={index}>
                     <div className="feature-one__single">
                       <div className="feature-one__icon">
-                        <img src={feature.icon?.url || "images/icons/ai-code.png"} alt="" />
+                        <img src={feature.icon?.data?.attributes?.url ? `http://localhost:1337${feature.icon.data.attributes.url}` : "images/icons/ai-code.png"} alt="" />
                       </div>
                       <h5 className="feature-one__title-2 text-white">
                         {feature.title || 'AI Code Generator'}
@@ -114,7 +114,7 @@ const AiPack = () => {
                   <li key={index}>
                     <div className="feature-one__single">
                       <div className="feature-one__icon">
-                        <img src={feature.icon?.url || "images/icons/ai-audio.png"} alt="" />
+                        <img src={feature.icon?.data?.attributes?.url ? `http://localhost:1337${feature.icon.data.attributes.url}` : "images/icons/ai-audio.png"} alt="" />
                       </div>
                       <h5 className="feature-one__title-2 text-white">
                         {feature.title || 'Generate Text to Audio'}

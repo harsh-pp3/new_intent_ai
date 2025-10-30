@@ -47,10 +47,10 @@ const Solutions = () => {
             <span className="section-title__tagline">{solutionsData?.sectionTitle || 'Solutions'}</span>
           </div>
           <h2 className="section-title__title">
-            {typeof solutionsData?.mainTitle === 'string' ? solutionsData.mainTitle : 'AI-Powered Solutions and Consultancy'}
+            {solutionsData?.mainTitle || 'AI-Powered Solutions and Consultancy'}
           </h2>
           <p>
-            {typeof solutionsData?.description === 'string' ? solutionsData.description : 'We offer a wide range of AI consulting services to optimize content creation and consumption. Our solutions are tailor-made to meet your business needs, ensuring you deliver the right content in the correct format to the right audience.'}
+            {solutionsData?.description || 'We offer a wide range of AI consulting services to optimize content creation and consumption. Our solutions are tailor-made to meet your business needs, ensuring you deliver the right content in the correct format to the right audience.'}
           </p>
         </div>
         <div className="solutions-one__carousel ">
@@ -64,7 +64,7 @@ const Solutions = () => {
                 <div className="item h-100">
                   <div className="solutions-one__single h-100">
                     <div className="solutions-one__icon">
-                      <img src={item.icon?.url || item.image} alt={item.title} />
+                      <img src={item.icon?.data?.attributes?.url ? `http://localhost:1337${item.icon.data.attributes.url}` : item.image} alt={item.title} />
                     </div>
                     <h4 className="solutions-one__title">
                       <span className="text-white">{item.title}</span>
