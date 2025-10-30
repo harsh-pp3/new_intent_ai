@@ -2,7 +2,7 @@ const API_URL = 'http://localhost:1337/api';
 const STRAPI_URL = 'http://localhost:1337';
 
 export const fetchHeroSection = async () => {
-  const response = await fetch(`${API_URL}/hero-section?populate=*`);
+  const response = await fetch(`${API_URL}/hero-section?populate[0]=aiFeatures.icon`);
   return response.json();
 };
 
@@ -17,7 +17,7 @@ export const fetchAboutUs = async () => {
 
 export const fetchSolutions = async () => {
   try {
-    const response = await fetch(`${API_URL}/solution?populate=*`);
+    const response = await fetch(`${API_URL}/solution?populate[solutionItems][populate]=*`);
     return response.json();
   } catch (error) {
     return { data: null };
